@@ -36,7 +36,6 @@ arrayOfValues.pop(0)
 # print(arrayOfValues[0]['lastName'])
 for listKeys in arrayOfValues:
 
-
     try:
         nameGent = (
                 morph.parse(listKeys['lastName'])[0].inflect({'gent'}).word + " " + \
@@ -46,7 +45,8 @@ for listKeys in arrayOfValues:
         nameGent = (listKeys['lastName'] + " " + listKeys['firstName'] + " " + listKeys['patronymic']).title()
 
     context = {'inn': listKeys['inn'], 'nameGent': nameGent, 'name':
-        (listKeys['lastName'] + " " + listKeys['firstName'] + " " + listKeys['patronymic']).title()}
+        (listKeys['lastName'] + " " + listKeys['firstName'] + " " + listKeys['patronymic']).title(),
+               'okved': listKeys['okved'], 'longOkved': listKeys['longOkved']}
 
     doc = DocxTemplate("!МП шаблон.docx")
     doc.render(context)
@@ -59,3 +59,7 @@ for listKeys in arrayOfValues:
     doc = DocxTemplate("!Уведомление шаблон.docx")
     doc.render(context)
     doc.save("Уведомление " + context['name'] + ".docx")
+
+    doc = DocxTemplate("!Акт шаблон.docx")
+    doc.render(context)
+    doc.save("Акт " + context['name'] + ".docx")
