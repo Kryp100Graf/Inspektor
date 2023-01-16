@@ -1,22 +1,6 @@
-# This is a sample Python script.
-import morph as morph
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-# def print_hi(name):
-# Use a breakpoint in the code line below to debug your script.
-# print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-# if __name__ == '__main__':
-#     print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
-from docxtpl import DocxTemplate
 import openpyxl
 import pymorphy2
+from docxtpl import DocxTemplate
 
 wb = openpyxl.load_workbook('!источник.xlsx')
 ws = wb['Лист1']
@@ -30,10 +14,7 @@ for row in ws.values:
                 'endOfActivities': row[6], 'okved': row[7], 'longOkved': row[8]}
     arrayOfValues.append(listKeys)
 arrayOfValues.pop(0)
-# name = (listKeys['lastName'] + ' ' + listKeys['firstName'] + ' ' + listKeys['patronymic']).title()
 
-
-# print(arrayOfValues[0]['lastName'])
 for listKeys in arrayOfValues:
 
     try:
